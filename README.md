@@ -32,5 +32,5 @@ sudo nano /etc/tomcat9/Catalina/localhost/mybatismusic.xml
 ### Compile
 **mvn compile war:inplace**
 
-Start Tomcat and visit http://localhost:8080
+Start Tomcat and visit http://localhost:8080/mybatismusic
 (If dependencies change, run $ **mvn clean** first)
