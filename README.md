@@ -29,6 +29,8 @@ sudo nano /etc/tomcat9/Catalina/localhost/mybatismusic.xml
         reloadable="true">
     </Context>
 
+### Compile
 **mvn compile war:inplace**
+
 Start Tomcat and visit http://localhost:8080
 (If dependencies change, run $ **mvn clean** first)
