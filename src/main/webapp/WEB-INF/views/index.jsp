@@ -37,6 +37,22 @@ textarea {
 	width: 10%;
 	margin-bottom: -10px;
 }
+a:link {
+	color: #2C80D0;
+	text-decoration: none;
+}
+a:visited {
+	color: #2C80D0;
+	text-decoration: none;
+}
+a:active {
+	color: #2C80D0;
+	text-decoration: none;
+}
+a:hover {
+	color: #2C80D0;
+	text-decoration: underline;
+}
 </style>
 <script src="resources/js/jquery-3.6.1.min.js"></script>
 <script>
@@ -79,6 +95,11 @@ $(document).ready(function() {
 	</div>
 
 	<div id="paging">
+		<c:if test="${param.page > 1 }">
+		<a href="?page=${param.page - 1 }" title="${param.page - 1}">&nbsp;◁ &nbsp;</a>
+		</c:if>
+
+
 		<c:if test="${prevBlock > 0}">
 		<a href="?page=1" title="1">[First]</a>
 		<a href="?page=${prevBlock }" title="${prevBlock }">[Prev]</a>
@@ -99,6 +120,11 @@ $(document).ready(function() {
 		<a href="?page=${nextBlock }" title="${nextBlock }">[Next]</a>
 		<a href="?page=${totalPage }" title="${totalPage }">[Last]</a>
 		</c:if>
+
+		<c:if test="${param.page < totalPage }">
+		<a href="?page=${param.page + 1}" title="${param.page + 1}">&nbsp;▷ &nbsp;</a>
+		</c:if>
+
 		<form id="addForm" action="./">
 			<textarea id="addForm-ta" name="content" cols="30" rows="1"></textarea>
 			<input id="submit" type="submit" value="Send" /> 

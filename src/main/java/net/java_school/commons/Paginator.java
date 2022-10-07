@@ -1,5 +1,23 @@
+/*
+ * ----------------Design--------------------------------------------
+ * [First] [Prev] 11 12 13 14 15 16 17 18 19 20 [Next] [Last] 
+ * 
+ * ----------------Numbers for paging--------------------------------------
+ * [First] -- 1
+ * [Prev]  -- prevBlock
+ * 11      -- firstPage (within current block)
+ * 20      -- lastPage (within current block)
+ * [Next]  -- nextBlock
+ * [Last]  -- totalPage (totalPage is equal to the final page number)
+ * 
+ * -----------------Number for design-------------------------------------
+ * listItemNo  -- The number to append to the first item in the list (Not persistent data)
+ * 
+ * ------------------Numbers for fetch query-------------------
+ * startRecord -- First record number on the current page
+ * endRecord   -- Last record number on the current page
+ */
 package net.java_school.commons;
-
 
 public interface Paginator {
 
@@ -30,11 +48,14 @@ public interface Paginator {
 		int startRecord = (page - 1) * numPerPage + 1;
 		int endRecord = page * numPerPage;
 
-		numbers.setTotalPage(totalPage);
+		numbers.setPrevBlock(prevBlock);
 		numbers.setFirstPage(firstPage);
 		numbers.setLastPage(lastPage);
-		numbers.setPrevBlock(prevBlock);
 		numbers.setNextBlock(nextBlock);
+		numbers.setTotalPage(totalPage);
+
+		numbers.setListItemNo(listItemNo);
+
 		numbers.setStartRecord(startRecord);
 		numbers.setEndRecord(endRecord);
 
