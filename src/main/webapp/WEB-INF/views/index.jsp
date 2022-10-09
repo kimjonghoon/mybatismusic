@@ -96,13 +96,12 @@ $(document).ready(function() {
 
 	<div id="paging">
 		<c:if test="${param.page > 1 }">
-		<a href="?page=${param.page - 1 }" title="${param.page - 1}">&nbsp;◁ &nbsp;</a>
+		<a href="?page=${param.page - 1 }" title="${param.page - 1}" style="border: 3px solid red;">&nbsp;&nbsp; ◁  Back &nbsp;&nbsp;</a>
 		</c:if>
 
-
 		<c:if test="${prevBlock > 0}">
-		<a href="?page=1" title="1">[First]</a>
-		<a href="?page=${prevBlock }" title="${prevBlock }">[Prev]</a>
+		<a href="?page=1" title="1">1</a>
+		<a href="?page=${prevBlock }" title="${prevBlock }">&nbsp;...&nbsp;</a>
 		</c:if>
 
 		<c:forEach var="i" begin="${firstPage }" end="${lastPage }" varStatus="status">
@@ -117,12 +116,12 @@ $(document).ready(function() {
 		</c:forEach>
 
 		<c:if test="${nextBlock > 0 }">
-		<a href="?page=${nextBlock }" title="${nextBlock }">[Next]</a>
-		<a href="?page=${totalPage }" title="${totalPage }">[Last]</a>
+		<a href="?page=${nextBlock }" title="${nextBlock }">&nbsp;...&nbsp;</a>
+		<a href="?page=${totalPage }" title="${totalPage }">${totalPage }</a>
 		</c:if>
 
 		<c:if test="${param.page < totalPage }">
-		<a href="?page=${param.page + 1}" title="${param.page + 1}">&nbsp;▷ &nbsp;</a>
+		<a href="?page=${param.page + 1}" title="${param.page + 1}" style="border: 3px solid red;">&nbsp;&nbsp; Next ▷  &nbsp;&nbsp; </a>
 		</c:if>
 
 		<form id="addForm" action="./">

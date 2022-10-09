@@ -65,7 +65,7 @@ public class HomeController implements Paginator {
 		if (page == null) return "redirect:/?page=1";
 
 		int numPerPage = 4;
-		int pagePerBlock = 30;
+		int pagePerBlock = 10;
 
 		int totalRecord = musicVideoService.getTotalRecords();
 
