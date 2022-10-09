@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface MusicVideoMapper {
 
-	public int selectCountOfVideos();
+	public int selectCountOfVideos(@Param("searchWord") String searchWord);
 
 	public List<MusicVideo> selectVideos(HashMap<String, String> hashmap);
 

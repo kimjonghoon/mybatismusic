@@ -15,13 +15,14 @@ public class MusicVideoServiceImpl implements MusicVideoService {
 	private MusicVideoMapper musicVideoMapper;
 
 	@Override
-	public int getTotalRecords() {
-		return musicVideoMapper.selectCountOfVideos();
+	public int getTotalRecordCount(String searchWord) {
+		return musicVideoMapper.selectCountOfVideos(searchWord);
 	}
 
 	@Override
-	public List<MusicVideo> getVideos(Integer startRecord, Integer endRecord) {
+	public List<MusicVideo> getVideos(String searchWord, Integer startRecord, Integer endRecord) {
 		HashMap<String, String> hashmap = new HashMap<String, String>();
+		hashmap.put("searchWord", searchWord);
 		hashmap.put("start", startRecord.toString());
 		hashmap.put("end", endRecord.toString());
 

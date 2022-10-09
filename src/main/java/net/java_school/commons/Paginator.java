@@ -2,7 +2,7 @@
  * ----------------Design--------------------------------------------
  * [First] [Prev] 11 12 13 14 15 16 17 18 19 20 [Next] [Last] 
  * 
- * ----------------Numbers for paging--------------------------------------
+ * ----------------Numbers for pagination--------------------------------------
  * [First] -- 1
  * [Prev]  -- prevBlock
  * 11      -- firstPage (within current block)
@@ -19,23 +19,29 @@
  */
 package net.java_school.commons;
 
+import java.util.List;
+
 public interface Paginator {
 
-	public default NumbersForPaging getNumbersForPaging(int totalRecord, int page, int numPerPage, int pagePerBlock) {
+	public int getTotalRecordCount(String searchWord);
 
-		NumbersForPaging numbers = new NumbersForPaging();
+	public List<?> getItems(String searchWord, int startRecord, int endRecord);
 
-		int totalPage = totalRecord / numPerPage;
-		if (totalRecord % numPerPage != 0) totalPage++;
+	public default NumbersForPagination getNumbersForPagination(int totalRecordCount, int page, int recordsPerPage, int pagesPerBlock) {
 
-		int totalBlock = totalPage / pagePerBlock;
-		if (totalPage % pagePerBlock != 0) totalBlock++;
+		NumbersForPagination numbers = new NumbersForPagination();
 
-		int block = page / pagePerBlock;
-		if (page % pagePerBlock != 0) block++;
+		int totalPage = totalRecordCount / recordsPerPage;
+		if (totalRecordCount % recordsPerPage != 0) totalPage++;
 
-		int firstPage = (block - 1) * pagePerBlock + 1;
-		int lastPage = block * pagePerBlock;
+		int totalBlock = totalPage / pagesPerBlock;
+		if (totalPage % pagesPerBlock != 0) totalBlock++;
+
+		int block = page / pagesPerBlock;
+		if (page % pagesPerBlock != 0) block++;
+
+		int firstPage = (block - 1) * pagesPerBlock + 1;
+		int lastPage = block * pagesPerBlock;
 
 		int prevBlock = 0;
 		if (block > 1) prevBlock = firstPage - 1;
@@ -44,9 +50,9 @@ public interface Paginator {
 		if (block < totalBlock) nextBlock = lastPage + 1;
 		if (block >= totalBlock) lastPage = totalPage;
 		
-		int listItemNo = totalRecord - (page - 1) * numPerPage;
-		int startRecord = (page - 1) * numPerPage + 1;
-		int endRecord = page * numPerPage;
+		int listItemNo = totalRecordCount - (page - 1) * recordsPerPage;
+		int startRecord = (page - 1) * recordsPerPage + 1;
+		int endRecord = page * recordsPerPage;
 
 		numbers.setPrevBlock(prevBlock);
 		numbers.setFirstPage(firstPage);

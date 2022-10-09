@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface MusicVideoService {
 	
-	public int getTotalRecords();
+	public int getTotalRecordCount(String searchWord);
 
-	public List<MusicVideo> getVideos(Integer startRecord, Integer endRecord);
+	public List<MusicVideo> getVideos(String searchWord, Integer startRecord, Integer endRecord);
 
 	public void add(String content);
 }

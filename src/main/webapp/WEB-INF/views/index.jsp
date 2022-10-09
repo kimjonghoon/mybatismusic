@@ -89,7 +89,7 @@ $(document).ready(function() {
 </head>
 <body>
 	<div id="videos">
-		<c:forEach var="video" items="${list }" varStatus="status">
+		<c:forEach var="video" items="${items }" varStatus="status">
 		${video.content }
 		</c:forEach>
 	</div>
