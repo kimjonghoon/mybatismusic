@@ -40,9 +40,8 @@ public class HomeController implements Paginator {
 		int recordsPerPage = 4;
 		int pagesPerBlock = 10;
 		NumbersForPagination numbers = getNumbersForPagination(totalRecordCount, page, recordsPerPage, pagesPerBlock);
-		Integer startRecord = numbers.getStartRecord();
-		Integer endRecord = numbers.getEndRecord();
-		List<MusicVideo> items = getItems(searchWord, startRecord, endRecord);
+
+		List<MusicVideo> items = getItems(searchWord, numbers.getStartRecord(), numbers.getEndRecord());
 
 		model.addAttribute("items", items);
 		model.addAttribute("prevBlock", numbers.getPrevBlock());
