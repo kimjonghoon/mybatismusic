@@ -4,14 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
-
 import net.java_school.commons.Paginator;
 import net.java_school.commons.NumbersForPagination;
 
@@ -32,7 +30,7 @@ public class HomeController implements Paginator {
 	}
 
 	@GetMapping("/")
-	public String index(Integer page, String searchWord, Model model) {
+	public String index(@RequestParam(name="page", required=false) Integer page, @RequestParam(name="searchWord", required=false) String searchWord, Model model) {
 		if (page == null) return "redirect:/?page=1";
 
 		int totalRecordCount = getTotalRecordCount(searchWord);
