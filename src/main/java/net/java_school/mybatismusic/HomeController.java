@@ -53,7 +53,7 @@ public class HomeController implements Paginator {
 
 	@PostMapping("/")
 	@ResponseBody
-	public void add(String content) {
+	public void add(@RequestParam(name="content") String content) {
 		service.add(content);	
 	}
 }

@@ -54,7 +54,7 @@ a:hover {
 	text-decoration: underline;
 }
 </style>
-<script src="resources/js/jquery-3.6.1.min.js"></script>
+<script src="resources/js/jquery.js"></script>
 <script>
 $(document).ready(function() {
 	$("#addForm").submit(function (event) {
@@ -96,7 +96,7 @@ $(document).ready(function() {
 
 	<div id="paging">
 		<c:if test="${param.page > 1 }">
-		<a href="?page=${param.page - 1 }" title="${param.page - 1}" style="border: 3px solid red;">&nbsp;&nbsp; ◁  Back &nbsp;&nbsp;</a>
+		<a href="?page=${param.page - 1 }" title="${param.page - 1}"><button type="button">◁  Back</button></a>
 		</c:if>
 
 		<c:if test="${prevBlock > 0}">
@@ -121,11 +121,11 @@ $(document).ready(function() {
 		</c:if>
 
 		<c:if test="${param.page < totalPage }">
-		<a href="?page=${param.page + 1}" title="${param.page + 1}" style="border: 3px solid red;">&nbsp;&nbsp; Next ▷  &nbsp;&nbsp; </a>
+		<a href="?page=${param.page + 1}" title="${param.page + 1}"><button type="button">Next ▷ </button></a>
 		</c:if>
 
 		<form id="addForm" action="./">
-			<textarea id="addForm-ta" name="content" cols="30" rows="1"></textarea>
+			<textarea id="addForm-ta" name="content" cols="30" rows="3"></textarea>
 			<input id="submit" type="submit" value="Send" /> 
 		</form>
 	</div>
